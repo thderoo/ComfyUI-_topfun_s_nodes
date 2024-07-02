@@ -12,5 +12,5 @@ This node is compatible with SD 1.5 and SDXL 1.0.
 **Strength (SDXL 1.0):** <= 0.075
 
 ### Examples
-![Conditioning perturbation - Example 1](1.jpg)
-![Conditioning perturbation - example 2](2.jpg)
+![Conditioning perturbation - Example 1](img/1.jpg)
+![Conditioning perturbation - example 2](img/2.jpg)
