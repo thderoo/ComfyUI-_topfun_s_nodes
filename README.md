@@ -1,6 +1,6 @@
 # _topfun's ComfyUI Nodes
 
-Repository of my ComfyUI custom nodes.
+Repository of my custom ComfyUI nodes.
 
 ## Conditioning perturbation
 
