@@ -2,9 +2,9 @@
 
 Repository of my custom ComfyUI nodes.
 
-## Conditioning perturbation
+## Conditioning Perturbation
 
-Allows more diverse generation by adding random noise to the text conditioning embeddings.
+Allows for more diverse generation by adding random noise to the text conditioning embeddings.
 This node is compatible with SD 1.5 and SDXL 1.0.
 
 ### Recommended settings
