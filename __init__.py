@@ -40,12 +40,26 @@ class ConditioningPerturbation:
         output = []
 
         for c in conditioning:
-            noise = torch.randn(c[0].shape, generator=generator, device=device)
-            noise /= torch.norm(noise, dim=2, keepdim=True)
+            if c[0].shape[2] == 2048:
+                noise1 = torch.randn([c[0].shape[0], c[0].shape[1], 1280], generator=generator, device=device)
+                noise1 /= torch.norm(noise1, dim=2, keepdim=True)
 
-            norms = torch.norm(c[0], dim=2, keepdim=True)
+                noise2 = torch.randn([c[0].shape[0], c[0].shape[1], 768], generator=generator, device=device)
+                noise2 /= torch.norm(noise1, dim=2, keepdim=True)
 
-            cond = strength * norms * noise + (1 - strength) * c[0]
+                norms1 = torch.norm(c[0][:, :, :1280], dim=2, keepdim=True)
+                norms2 = torch.norm(c[0][:, :, 1280:], dim=2, keepdim=True)
+
+                cond = torch.clone(c[0])
+                cond[:, :, :1280] = strength * norms1 * noise1 + (1 - strength) * c[0][:, :, :1280]
+                cond[:, :, 1280:] = strength * norms2 * noise2 + (1 - strength) * c[0][:, :, 1280:]
+            else:
+                noise = torch.randn(c[0].shape, generator=generator, device=device)
+                noise /= torch.norm(noise, dim=2, keepdim=True)
+            
+                norms = torch.norm(c[0], dim=2, keepdim=True)
+
+                cond = strength * norms * noise + (1 - strength) * c[0]
 
             output.append([cond, c[1].copy()])
 
