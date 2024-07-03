@@ -28,7 +28,7 @@ class ConditioningPerturbation:
 
     FUNCTION = 'conditioning_perturbation'
 
-    CATEGORY = '_topfun'
+    CATEGORY = "_topfun's Nodes"
 
     def conditioning_perturbation(self, conditioning, strength, seed):
         device = conditioning[0][0].device
